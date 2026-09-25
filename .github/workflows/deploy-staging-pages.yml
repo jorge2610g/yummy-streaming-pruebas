@@ -1,0 +1,60 @@
+name: Publicar Streaming Pruebas
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: streaming-pruebas-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar staging de Streaming
+        uses: actions/checkout@v4
+        with:
+          repository: jorge2610g/yummy-streaming
+          ref: staging
+          path: source
+
+      - name: Preparar sitio de Pruebas
+        run: |
+          mkdir -p site
+          rsync -a source/ site/ \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude 'CNAME' \
+            --exclude 'tests' \
+            --exclude 'docs' \
+            --exclude 'supabase' \
+            --exclude 'node_modules' \
+            --exclude 'package.json' \
+            --exclude 'package-lock.json' \
+            --exclude 'playwright.config.js' \
+            --exclude 'vercel.json'
+          touch site/.nojekyll
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Empaquetar sitio
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Publicar GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
