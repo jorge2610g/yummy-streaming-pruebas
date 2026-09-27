@@ -60,3 +60,5 @@ jobs:
       - name: Publicar GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # republish trigger 2026-09-26 23:32 CL
