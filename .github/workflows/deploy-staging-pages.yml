@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
+  # republish trigger 2026-09-26 21:26 CL
 
 permissions:
   contents: read
