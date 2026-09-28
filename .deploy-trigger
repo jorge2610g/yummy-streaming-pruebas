@@ -1,10 +1,3 @@
-streaming-demo-v1.1.6 audit-fixes source=jorge2610g/yummy-streaming staging=d3a1bdcc8421834aba2805f85f0b45ca2a0ce850
-release-gate source=jorge2610g/yummy-streaming staging=2cffded5c8e23d2211b41afb7ce8a152e632c9f1 2026-09-26T19:45Z
-protection-gate source-sha=cf28466a36d0da35e9ac392e9e4e3f49e4b777a7
-final-guard-sync source-sha=422ed22f6d310b3ae19b931cbda07a4b9461a8d4
-route-fix-source=5262c5a8440bc93441e1ddf68239f293c7d766e9
-streaming-write-fix-source=2b36d88fc8fd291b58ca9659cde9f3a3879f6596
-streaming-write-fix-final-source=7123ff17eabfcf10535d0098aac144f22a33d6df
-route-assets-source=dbcee84c2d36c9fff0af311bd703bfdd4db0aa7b
-pwa-fix-source=df4223a42c597bc20d237e0c74cc366d180bc935
-audit-sync-source=2b6d27dfef51860d9a65497878e7088d09dd1551
+custom-domain-validation
+source 380aacdbda2613986105476c604e04c2d5b5bb89
+reason business-custom-domain-staging
